@@ -10,6 +10,11 @@ type server struct {
 }
 
 func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "GET":
+		w.WriteHeader(http.StausOK)
+		w.Write()
+	}
 }
 func (s *server) GetStatus(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {

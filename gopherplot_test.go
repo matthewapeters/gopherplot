@@ -15,7 +15,7 @@ func TestServer(t *testing.T) {
 	doTest := make(chan bool)
 	go func() {
 		go d.Serve()
-		<-time.After(3 * time.Second)
+		<-time.After(time.Second)
 		close(doTest)
 		<-time.After(15 * time.Second)
 	}()
@@ -37,4 +37,9 @@ func TestServer(t *testing.T) {
 		return
 	}
 	resp.Body.Close()
+	<-time.After(20 * time.Second)
+}
+
+func TestCube(t *testing.T) {
+	_ = [][3]float64{{-1.0, -1.0, 0}, {-1, 1, 0}, {1, 1, 0}, {1, -1, 0}}
 }

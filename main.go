@@ -34,31 +34,14 @@ type Dimension struct {
 // DataSpace is the renderable domain
 type DataSpace struct {
 	X, Y, Z                   Dimension
-	Data                      []Projectable
 	Background                color.RGBA
 	RenderWidth, RenderHeight int
+	Verteces                  []Vertex
+	Edges                     []Line
 	Camera                    Point
 	FocalPoint                Point
 	CameraAngles              [3]float64
 	anglesComputed            bool
-}
-
-//ComputeCameraAngles computes the 3 rotational angles of the Camera to the FocalPoint
-func (ds *DataSpace) ComputeCameraAngles() {
-	if ds.anglesComputed {
-		return
-	}
-	//XY Angle
-	var xy float64
-
-	//XZ Angle
-	var xz float64
-
-	//YZ Angle
-	var yz float64
-
-	ds.anglesComputed = true
-	ds.CameraAngles = [3]float64{xy, xz, yz}
 }
 
 func (ds *DataSpace) checkDefaults() {

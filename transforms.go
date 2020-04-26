@@ -267,3 +267,20 @@ func (m *Matrix) AddMatrix(m2 *Matrix) error {
 	}
 	return nil
 }
+
+func (m *Matrix) String() string {
+	var s string
+	for j := 0; j < m.Dimension()[1]; j++ {
+		prefix := "\n"
+		for i := 0; i < m.Dimension()[0]; i++ {
+			v, err := m.Get(i, j)
+			if err != nil {
+				fmt.Println(err)
+				return ""
+			}
+			s += fmt.Sprintf("%s[%0.2f]", prefix, v.Value().(float64))
+			prefix = " "
+		}
+	}
+	return s
+}

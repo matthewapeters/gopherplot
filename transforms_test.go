@@ -80,4 +80,5 @@ func TestMatrix(t *testing.T) {
 	if x.Value().(float64) != 600.0 {
 		t.Error(err)
 	}
+	fmt.Println(m)
 }
